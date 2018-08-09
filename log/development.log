@@ -14440,3 +14440,1251 @@ Processing by ActiveStorage::DiskController#show as PNG
 Completed 200 OK in 2ms (ActiveRecord: 0.0ms)
 
 
+Started POST "/api/v1/scores" for 127.0.0.1 at 2018-08-08 20:36:02 -0400
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/davidtenenbaum/.rvm/gems/ruby-2.3.3/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+Processing by Api::V1::ScoresController#create as */*
+  Parameters: {"title"=>"david", "composer"=>"tenenbaum", "user_id"=>"1", "music_score"=>#<ActionDispatch::Http::UploadedFile:0x007fc383724fe0 @tempfile=#<Tempfile:/var/folders/09/n8kzsr3j19n0ck_x3185l3f80000gn/T/RackMultipart20180808-71016-p9x3rl.pdf>, @original_filename="bottesini.pdf", @content_type="application/pdf", @headers="Content-Disposition: form-data; name=\"music_score\"; filename=\"bottesini.pdf\"\r\nContent-Type: application/pdf\r\n">}
+[36m  Disk Storage (41.4ms) [0m[32mUploaded file to key: DTdeqkncbqqooTFWJtvKJRE5 (checksum: HdtP/+g9VG+XTFRyGe/wvw==)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/scores_controller.rb:10
+  [1m[36mActiveStorage::Blob Create (0.7ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["key", "DTdeqkncbqqooTFWJtvKJRE5"], ["filename", "bottesini.pdf"], ["content_type", "application/pdf"], ["metadata", "{\"identified\":true}"], ["byte_size", 11252145], ["checksum", "HdtP/+g9VG+XTFRyGe/wvw=="], ["created_at", "2018-08-09 00:36:02.878729"]]
+  ↳ app/controllers/api/v1/scores_controller.rb:10
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/scores_controller.rb:10
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/scores_controller.rb:10
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/scores_controller.rb:10
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/scores_controller.rb:10
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/scores_controller.rb:10
+  [1m[36mScore Create (0.6ms)[0m  [1m[32mINSERT INTO "scores" ("title", "composer", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "david"], ["composer", "tenenbaum"], ["user_id", 1], ["created_at", "2018-08-09 00:36:02.903978"], ["updated_at", "2018-08-09 00:36:02.903978"]]
+  ↳ app/controllers/api/v1/scores_controller.rb:10
+  [1m[36mActiveStorage::Attachment Create (0.5ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "music_score"], ["record_type", "Score"], ["record_id", 3], ["blob_id", 2], ["created_at", "2018-08-09 00:36:02.905830"]]
+  ↳ app/controllers/api/v1/scores_controller.rb:10
+  [1m[36mScore Update (0.5ms)[0m  [1m[33mUPDATE "scores" SET "updated_at" = $1 WHERE "scores"."id" = $2[0m  [["updated_at", "2018-08-09 00:36:02.907294"], ["id", 3]]
+  ↳ app/controllers/api/v1/scores_controller.rb:10
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/scores_controller.rb:10
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 9ccc324f-579a-446f-ac4f-afbad5f7d398) to Async(default) with arguments: #<GlobalID:0x007fc3832a0870 @uri=#<URI::GID gid://project-backend/ActiveStorage::Blob/2>>
+[active_model_serializers] Rendered ScoreSerializer with ActiveModelSerializers::Adapter::Attributes (2.24ms)
+Completed 200 OK in 255ms (Views: 20.6ms | ActiveRecord: 24.1ms)
+
+
+  [1m[36mActiveStorage::Blob Load (1.0ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /Users/davidtenenbaum/.rvm/gems/ruby-2.3.3/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+[ActiveJob] [ActiveStorage::AnalyzeJob] [9ccc324f-579a-446f-ac4f-afbad5f7d398] Performing ActiveStorage::AnalyzeJob (Job ID: 9ccc324f-579a-446f-ac4f-afbad5f7d398) from Async(default) with arguments: #<GlobalID:0x007fc3831dd2a8 @uri=#<URI::GID gid://project-backend/ActiveStorage::Blob/2>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [9ccc324f-579a-446f-ac4f-afbad5f7d398]   [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [9ccc324f-579a-446f-ac4f-afbad5f7d398]   ↳ /Users/davidtenenbaum/.rvm/gems/ruby-2.3.3/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+[ActiveJob] [ActiveStorage::AnalyzeJob] [9ccc324f-579a-446f-ac4f-afbad5f7d398]   [1m[36mActiveStorage::Blob Update (0.7ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 2]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [9ccc324f-579a-446f-ac4f-afbad5f7d398]   ↳ /Users/davidtenenbaum/.rvm/gems/ruby-2.3.3/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+[ActiveJob] [ActiveStorage::AnalyzeJob] [9ccc324f-579a-446f-ac4f-afbad5f7d398]   [1m[35m (1.7ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [9ccc324f-579a-446f-ac4f-afbad5f7d398]   ↳ /Users/davidtenenbaum/.rvm/gems/ruby-2.3.3/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+[ActiveJob] [ActiveStorage::AnalyzeJob] [9ccc324f-579a-446f-ac4f-afbad5f7d398] Performed ActiveStorage::AnalyzeJob (Job ID: 9ccc324f-579a-446f-ac4f-afbad5f7d398) from Async(default) in 8.72ms
+Started GET "/api/v1/scores/2" for 127.0.0.1 at 2018-08-08 20:36:08 -0400
+Processing by Api::V1::ScoresController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mScore Load (0.4ms)[0m  [1m[34mSELECT  "scores".* FROM "scores" WHERE "scores"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/scores_controller.rb:15
+  [1m[36mActiveStorage::Attachment Load (1.2ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "Score"], ["name", "music_score"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/scores_controller.rb:16
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/scores_controller.rb:16
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.6ms)
+Completed 200 OK in 17ms (Views: 8.5ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/api/v1/scores/2" for 127.0.0.1 at 2018-08-08 20:36:10 -0400
+Processing by Api::V1::ScoresController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mScore Load (0.5ms)[0m  [1m[34mSELECT  "scores".* FROM "scores" WHERE "scores"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/scores_controller.rb:15
+  [1m[36mActiveStorage::Attachment Load (0.6ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "Score"], ["name", "music_score"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/scores_controller.rb:16
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/scores_controller.rb:16
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.33ms)
+Completed 200 OK in 6ms (Views: 0.7ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/api/v1/scores" for 127.0.0.1 at 2018-08-08 20:36:13 -0400
+Processing by Api::V1::ScoresController#index as HTML
+  [1m[36mScore Load (0.4ms)[0m  [1m[34mSELECT "scores".* FROM "scores"[0m
+  ↳ app/controllers/api/v1/scores_controller.rb:6
+[active_model_serializers]   [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/scores_controller.rb:6
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/scores_controller.rb:6
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/scores_controller.rb:6
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (6.39ms)
+Completed 200 OK in 8ms (Views: 7.0ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/api/v1/scores" for 127.0.0.1 at 2018-08-08 20:41:11 -0400
+Processing by Api::V1::ScoresController#create as */*
+  Parameters: {"title"=>"david", "composer"=>",mNasd", "user_id"=>"1", "music_score"=>#<ActionDispatch::Http::UploadedFile:0x007fc3833e8a20 @tempfile=#<Tempfile:/var/folders/09/n8kzsr3j19n0ck_x3185l3f80000gn/T/RackMultipart20180808-71016-1m4jmt7.pdf>, @original_filename="bottesini.pdf", @content_type="application/pdf", @headers="Content-Disposition: form-data; name=\"music_score\"; filename=\"bottesini.pdf\"\r\nContent-Type: application/pdf\r\n">}
+[36m  Disk Storage (39.9ms) [0m[32mUploaded file to key: ynQo7uo5DceWfwmsXC3q5XfZ (checksum: HdtP/+g9VG+XTFRyGe/wvw==)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/scores_controller.rb:10
+  [1m[36mActiveStorage::Blob Create (0.7ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["key", "ynQo7uo5DceWfwmsXC3q5XfZ"], ["filename", "bottesini.pdf"], ["content_type", "application/pdf"], ["metadata", "{\"identified\":true}"], ["byte_size", 11252145], ["checksum", "HdtP/+g9VG+XTFRyGe/wvw=="], ["created_at", "2018-08-09 00:41:11.304555"]]
+  ↳ app/controllers/api/v1/scores_controller.rb:10
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/scores_controller.rb:10
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/scores_controller.rb:10
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/scores_controller.rb:10
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/scores_controller.rb:10
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/scores_controller.rb:10
+  [1m[36mScore Create (0.5ms)[0m  [1m[32mINSERT INTO "scores" ("title", "composer", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "david"], ["composer", ",mNasd"], ["user_id", 1], ["created_at", "2018-08-09 00:41:11.311933"], ["updated_at", "2018-08-09 00:41:11.311933"]]
+  ↳ app/controllers/api/v1/scores_controller.rb:10
+  [1m[36mActiveStorage::Attachment Create (0.4ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "music_score"], ["record_type", "Score"], ["record_id", 4], ["blob_id", 3], ["created_at", "2018-08-09 00:41:11.313633"]]
+  ↳ app/controllers/api/v1/scores_controller.rb:10
+  [1m[36mScore Update (0.4ms)[0m  [1m[33mUPDATE "scores" SET "updated_at" = $1 WHERE "scores"."id" = $2[0m  [["updated_at", "2018-08-09 00:41:11.314983"], ["id", 4]]
+  ↳ app/controllers/api/v1/scores_controller.rb:10
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/scores_controller.rb:10
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 745f858a-9726-41c3-b022-077ebc6521ed) to Async(default) with arguments: #<GlobalID:0x007fc37f31fef8 @uri=#<URI::GID gid://project-backend/ActiveStorage::Blob/3>>
+[active_model_serializers] Rendered ScoreSerializer with ActiveModelSerializers::Adapter::Attributes (0.27ms)
+Completed 200 OK in 80ms (Views: 1.2ms | ActiveRecord: 4.7ms)
+
+
+  [1m[36mActiveStorage::Blob Load (0.9ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ /Users/davidtenenbaum/.rvm/gems/ruby-2.3.3/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+[ActiveJob] [ActiveStorage::AnalyzeJob] [745f858a-9726-41c3-b022-077ebc6521ed] Performing ActiveStorage::AnalyzeJob (Job ID: 745f858a-9726-41c3-b022-077ebc6521ed) from Async(default) with arguments: #<GlobalID:0x007fc37f3663f8 @uri=#<URI::GID gid://project-backend/ActiveStorage::Blob/3>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [745f858a-9726-41c3-b022-077ebc6521ed]   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [745f858a-9726-41c3-b022-077ebc6521ed]   ↳ /Users/davidtenenbaum/.rvm/gems/ruby-2.3.3/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+[ActiveJob] [ActiveStorage::AnalyzeJob] [745f858a-9726-41c3-b022-077ebc6521ed]   [1m[36mActiveStorage::Blob Update (0.4ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 3]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [745f858a-9726-41c3-b022-077ebc6521ed]   ↳ /Users/davidtenenbaum/.rvm/gems/ruby-2.3.3/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+[ActiveJob] [ActiveStorage::AnalyzeJob] [745f858a-9726-41c3-b022-077ebc6521ed]   [1m[35m (1.7ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [745f858a-9726-41c3-b022-077ebc6521ed]   ↳ /Users/davidtenenbaum/.rvm/gems/ruby-2.3.3/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+[ActiveJob] [ActiveStorage::AnalyzeJob] [745f858a-9726-41c3-b022-077ebc6521ed] Performed ActiveStorage::AnalyzeJob (Job ID: 745f858a-9726-41c3-b022-077ebc6521ed) from Async(default) in 4.51ms
+Started GET "/api/v1/scores/1" for 127.0.0.1 at 2018-08-08 20:42:18 -0400
+Processing by Api::V1::ScoresController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mScore Load (0.6ms)[0m  [1m[34mSELECT  "scores".* FROM "scores" WHERE "scores"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/scores_controller.rb:15
+  [1m[36mActiveStorage::Attachment Load (0.9ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Score"], ["name", "music_score"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/scores_controller.rb:16
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 1.5ms)
+
+
+  
+Module::DelegationError (signed_id delegated to attachment, but attachment is nil):
+  
+app/controllers/api/v1/scores_controller.rb:16:in `show'
+Started GET "/api/v1/scores/2" for 127.0.0.1 at 2018-08-08 20:42:25 -0400
+Processing by Api::V1::ScoresController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mScore Load (0.3ms)[0m  [1m[34mSELECT  "scores".* FROM "scores" WHERE "scores"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/scores_controller.rb:15
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "Score"], ["name", "music_score"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/scores_controller.rb:16
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/scores_controller.rb:16
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.28ms)
+Completed 200 OK in 5ms (Views: 0.8ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/api/v1/user/2" for 127.0.0.1 at 2018-08-08 20:42:33 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/user/2"):
+  
+actionpack (5.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.1) lib/rails/rack/logger.rb:26:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+rack-cors (1.0.2) lib/rack/cors.rb:97:in `call'
+railties (5.2.1) lib/rails/engine.rb:524:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+Started GET "/api/v1/users/2" for 127.0.0.1 at 2018-08-08 20:42:36 -0400
+Processing by Api::V1::UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+Completed 500 Internal Server Error in 48ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `authenticate' for #<Api::V1::UsersController:0x007fc37fc947b8>):
+  
+activesupport (5.2.1) lib/active_support/callbacks.rb:426:in `block in make_lambda'
+activesupport (5.2.1) lib/active_support/callbacks.rb:179:in `block (2 levels) in halting_and_conditional'
+actionpack (5.2.1) lib/abstract_controller/callbacks.rb:34:in `block (2 levels) in <module:Callbacks>'
+activesupport (5.2.1) lib/active_support/callbacks.rb:180:in `block in halting_and_conditional'
+activesupport (5.2.1) lib/active_support/callbacks.rb:513:in `block in invoke_before'
+activesupport (5.2.1) lib/active_support/callbacks.rb:513:in `each'
+activesupport (5.2.1) lib/active_support/callbacks.rb:513:in `invoke_before'
+activesupport (5.2.1) lib/active_support/callbacks.rb:131:in `run_callbacks'
+actionpack (5.2.1) lib/abstract_controller/callbacks.rb:41:in `process_action'
+actionpack (5.2.1) lib/action_controller/metal/rescue.rb:22:in `process_action'
+actionpack (5.2.1) lib/action_controller/metal/instrumentation.rb:34:in `block in process_action'
+activesupport (5.2.1) lib/active_support/notifications.rb:168:in `block in instrument'
+activesupport (5.2.1) lib/active_support/notifications/instrumenter.rb:23:in `instrument'
+activesupport (5.2.1) lib/active_support/notifications.rb:168:in `instrument'
+actionpack (5.2.1) lib/action_controller/metal/instrumentation.rb:32:in `process_action'
+actionpack (5.2.1) lib/action_controller/metal/params_wrapper.rb:256:in `process_action'
+activerecord (5.2.1) lib/active_record/railties/controller_runtime.rb:24:in `process_action'
+actionpack (5.2.1) lib/abstract_controller/base.rb:134:in `process'
+actionpack (5.2.1) lib/action_controller/metal.rb:191:in `dispatch'
+actionpack (5.2.1) lib/action_controller/metal.rb:252:in `dispatch'
+actionpack (5.2.1) lib/action_dispatch/routing/route_set.rb:52:in `dispatch'
+actionpack (5.2.1) lib/action_dispatch/routing/route_set.rb:34:in `serve'
+actionpack (5.2.1) lib/action_dispatch/journey/router.rb:52:in `block in serve'
+actionpack (5.2.1) lib/action_dispatch/journey/router.rb:35:in `each'
+actionpack (5.2.1) lib/action_dispatch/journey/router.rb:35:in `serve'
+actionpack (5.2.1) lib/action_dispatch/routing/route_set.rb:840:in `call'
+rack (2.0.5) lib/rack/etag.rb:25:in `call'
+rack (2.0.5) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.5) lib/rack/head.rb:12:in `call'
+activerecord (5.2.1) lib/active_record/migration.rb:559:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+activesupport (5.2.1) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (5.2.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.1) lib/rails/rack/logger.rb:26:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+rack-cors (1.0.2) lib/rack/cors.rb:97:in `call'
+railties (5.2.1) lib/rails/engine.rb:524:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+Started GET "/api/v1/users/1" for 127.0.0.1 at 2018-08-08 20:42:38 -0400
+Processing by Api::V1::UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+Completed 500 Internal Server Error in 42ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `authenticate' for #<Api::V1::UsersController:0x007fc37fd6e008>):
+  
+activesupport (5.2.1) lib/active_support/callbacks.rb:426:in `block in make_lambda'
+activesupport (5.2.1) lib/active_support/callbacks.rb:179:in `block (2 levels) in halting_and_conditional'
+actionpack (5.2.1) lib/abstract_controller/callbacks.rb:34:in `block (2 levels) in <module:Callbacks>'
+activesupport (5.2.1) lib/active_support/callbacks.rb:180:in `block in halting_and_conditional'
+activesupport (5.2.1) lib/active_support/callbacks.rb:513:in `block in invoke_before'
+activesupport (5.2.1) lib/active_support/callbacks.rb:513:in `each'
+activesupport (5.2.1) lib/active_support/callbacks.rb:513:in `invoke_before'
+activesupport (5.2.1) lib/active_support/callbacks.rb:131:in `run_callbacks'
+actionpack (5.2.1) lib/abstract_controller/callbacks.rb:41:in `process_action'
+actionpack (5.2.1) lib/action_controller/metal/rescue.rb:22:in `process_action'
+actionpack (5.2.1) lib/action_controller/metal/instrumentation.rb:34:in `block in process_action'
+activesupport (5.2.1) lib/active_support/notifications.rb:168:in `block in instrument'
+activesupport (5.2.1) lib/active_support/notifications/instrumenter.rb:23:in `instrument'
+activesupport (5.2.1) lib/active_support/notifications.rb:168:in `instrument'
+actionpack (5.2.1) lib/action_controller/metal/instrumentation.rb:32:in `process_action'
+actionpack (5.2.1) lib/action_controller/metal/params_wrapper.rb:256:in `process_action'
+activerecord (5.2.1) lib/active_record/railties/controller_runtime.rb:24:in `process_action'
+actionpack (5.2.1) lib/abstract_controller/base.rb:134:in `process'
+actionpack (5.2.1) lib/action_controller/metal.rb:191:in `dispatch'
+actionpack (5.2.1) lib/action_controller/metal.rb:252:in `dispatch'
+actionpack (5.2.1) lib/action_dispatch/routing/route_set.rb:52:in `dispatch'
+actionpack (5.2.1) lib/action_dispatch/routing/route_set.rb:34:in `serve'
+actionpack (5.2.1) lib/action_dispatch/journey/router.rb:52:in `block in serve'
+actionpack (5.2.1) lib/action_dispatch/journey/router.rb:35:in `each'
+actionpack (5.2.1) lib/action_dispatch/journey/router.rb:35:in `serve'
+actionpack (5.2.1) lib/action_dispatch/routing/route_set.rb:840:in `call'
+rack (2.0.5) lib/rack/etag.rb:25:in `call'
+rack (2.0.5) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.5) lib/rack/head.rb:12:in `call'
+activerecord (5.2.1) lib/active_record/migration.rb:559:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+activesupport (5.2.1) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (5.2.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.1) lib/rails/rack/logger.rb:26:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+rack-cors (1.0.2) lib/rack/cors.rb:97:in `call'
+railties (5.2.1) lib/rails/engine.rb:524:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+Started GET "/api/v1/users/1" for 127.0.0.1 at 2018-08-08 20:42:45 -0400
+Processing by Api::V1::UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+Completed 500 Internal Server Error in 39ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `authenticate' for #<Api::V1::UsersController:0x007fc37f675a58>):
+  
+activesupport (5.2.1) lib/active_support/callbacks.rb:426:in `block in make_lambda'
+activesupport (5.2.1) lib/active_support/callbacks.rb:179:in `block (2 levels) in halting_and_conditional'
+actionpack (5.2.1) lib/abstract_controller/callbacks.rb:34:in `block (2 levels) in <module:Callbacks>'
+activesupport (5.2.1) lib/active_support/callbacks.rb:180:in `block in halting_and_conditional'
+activesupport (5.2.1) lib/active_support/callbacks.rb:513:in `block in invoke_before'
+activesupport (5.2.1) lib/active_support/callbacks.rb:513:in `each'
+activesupport (5.2.1) lib/active_support/callbacks.rb:513:in `invoke_before'
+activesupport (5.2.1) lib/active_support/callbacks.rb:131:in `run_callbacks'
+actionpack (5.2.1) lib/abstract_controller/callbacks.rb:41:in `process_action'
+actionpack (5.2.1) lib/action_controller/metal/rescue.rb:22:in `process_action'
+actionpack (5.2.1) lib/action_controller/metal/instrumentation.rb:34:in `block in process_action'
+activesupport (5.2.1) lib/active_support/notifications.rb:168:in `block in instrument'
+activesupport (5.2.1) lib/active_support/notifications/instrumenter.rb:23:in `instrument'
+activesupport (5.2.1) lib/active_support/notifications.rb:168:in `instrument'
+actionpack (5.2.1) lib/action_controller/metal/instrumentation.rb:32:in `process_action'
+actionpack (5.2.1) lib/action_controller/metal/params_wrapper.rb:256:in `process_action'
+activerecord (5.2.1) lib/active_record/railties/controller_runtime.rb:24:in `process_action'
+actionpack (5.2.1) lib/abstract_controller/base.rb:134:in `process'
+actionpack (5.2.1) lib/action_controller/metal.rb:191:in `dispatch'
+actionpack (5.2.1) lib/action_controller/metal.rb:252:in `dispatch'
+actionpack (5.2.1) lib/action_dispatch/routing/route_set.rb:52:in `dispatch'
+actionpack (5.2.1) lib/action_dispatch/routing/route_set.rb:34:in `serve'
+actionpack (5.2.1) lib/action_dispatch/journey/router.rb:52:in `block in serve'
+actionpack (5.2.1) lib/action_dispatch/journey/router.rb:35:in `each'
+actionpack (5.2.1) lib/action_dispatch/journey/router.rb:35:in `serve'
+actionpack (5.2.1) lib/action_dispatch/routing/route_set.rb:840:in `call'
+rack (2.0.5) lib/rack/etag.rb:25:in `call'
+rack (2.0.5) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.5) lib/rack/head.rb:12:in `call'
+activerecord (5.2.1) lib/active_record/migration.rb:559:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+activesupport (5.2.1) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (5.2.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.1) lib/rails/rack/logger.rb:26:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+rack-cors (1.0.2) lib/rack/cors.rb:97:in `call'
+railties (5.2.1) lib/rails/engine.rb:524:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+Started GET "/api/v1/users/" for 127.0.0.1 at 2018-08-08 20:42:47 -0400
+Processing by Api::V1::UsersController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:7
+[active_model_serializers]   [1m[36mScore Load (0.3ms)[0m  [1m[34mSELECT "scores".* FROM "scores" WHERE "scores"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/users_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (5.1ms)
+Completed 200 OK in 8ms (Views: 6.2ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/api/v1/users/" for 127.0.0.1 at 2018-08-08 20:43:14 -0400
+Processing by Api::V1::UsersController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:7
+[active_model_serializers]   [1m[36mScore Load (0.2ms)[0m  [1m[34mSELECT "scores".* FROM "scores" WHERE "scores"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/users_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (14.93ms)
+Completed 200 OK in 33ms (Views: 16.5ms | ActiveRecord: 14.5ms)
+
+
+Started GET "/api/v1/users/1" for 127.0.0.1 at 2018-08-08 20:43:17 -0400
+Processing by Api::V1::UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:11
+[active_model_serializers]   [1m[36mScore Load (0.2ms)[0m  [1m[34mSELECT "scores".* FROM "scores" WHERE "scores"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/users_controller.rb:12
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (1.83ms)
+Completed 200 OK in 4ms (Views: 1.9ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/api/v1/users/1" for 127.0.0.1 at 2018-08-08 20:44:10 -0400
+Processing by Api::V1::UsersController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:11
+[active_model_serializers]   [1m[36mScore Load (0.3ms)[0m  [1m[34mSELECT "scores".* FROM "scores" WHERE "scores"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/users_controller.rb:12
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (2.64ms)
+Completed 200 OK in 4ms (Views: 2.9ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/v1/users" for 127.0.0.1 at 2018-08-08 20:44:32 -0400
+Processing by Api::V1::UsersController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:7
+[active_model_serializers]   [1m[36mScore Load (0.3ms)[0m  [1m[34mSELECT "scores".* FROM "scores" WHERE "scores"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/users_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (2.94ms)
+Completed 200 OK in 5ms (Views: 3.8ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/v1/scores" for 127.0.0.1 at 2018-08-08 20:44:34 -0400
+Processing by Api::V1::ScoresController#index as HTML
+  [1m[36mScore Load (0.3ms)[0m  [1m[34mSELECT "scores".* FROM "scores"[0m
+  ↳ app/controllers/api/v1/scores_controller.rb:6
+[active_model_serializers]   [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/scores_controller.rb:6
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/scores_controller.rb:6
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/scores_controller.rb:6
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/scores_controller.rb:6
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (7.2ms)
+Completed 200 OK in 10ms (Views: 8.5ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/v1/scores/2" for 127.0.0.1 at 2018-08-08 20:44:35 -0400
+Processing by Api::V1::ScoresController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mScore Load (0.3ms)[0m  [1m[34mSELECT  "scores".* FROM "scores" WHERE "scores"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/scores_controller.rb:15
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "Score"], ["name", "music_score"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/scores_controller.rb:16
+  [1m[36mActiveStorage::Blob Load (0.4ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/scores_controller.rb:16
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.37ms)
+Completed 200 OK in 36ms (Views: 6.9ms | ActiveRecord: 8.6ms)
+
+
+Started GET "/api/v1/users/1" for 127.0.0.1 at 2018-08-08 20:45:45 -0400
+Processing by Api::V1::UsersController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:11
+[active_model_serializers]   [1m[36mScore Load (0.9ms)[0m  [1m[34mSELECT "scores".* FROM "scores" WHERE "scores"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/users_controller.rb:12
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (9.66ms)
+Completed 200 OK in 12ms (Views: 9.5ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/api/v1/scores/1" for 127.0.0.1 at 2018-08-08 20:46:19 -0400
+Processing by Api::V1::ScoresController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mScore Load (0.3ms)[0m  [1m[34mSELECT  "scores".* FROM "scores" WHERE "scores"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/scores_controller.rb:15
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Score"], ["name", "music_score"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/scores_controller.rb:16
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.6ms)
+
+
+  
+Module::DelegationError (signed_id delegated to attachment, but attachment is nil):
+  
+app/controllers/api/v1/scores_controller.rb:16:in `show'
+Started GET "/api/v1/scores/2" for 127.0.0.1 at 2018-08-08 20:46:22 -0400
+Processing by Api::V1::ScoresController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mScore Load (0.2ms)[0m  [1m[34mSELECT  "scores".* FROM "scores" WHERE "scores"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/scores_controller.rb:15
+  [1m[36mActiveStorage::Attachment Load (0.5ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "Score"], ["name", "music_score"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/scores_controller.rb:16
+  [1m[36mActiveStorage::Blob Load (0.5ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/scores_controller.rb:16
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.31ms)
+Completed 200 OK in 8ms (Views: 1.5ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/api/v1/scores/2" for 127.0.0.1 at 2018-08-08 20:48:50 -0400
+Processing by Api::V1::ScoresController#show as */*
+  Parameters: {"id"=>"2"}
+  [1m[36mScore Load (0.4ms)[0m  [1m[34mSELECT  "scores".* FROM "scores" WHERE "scores"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/scores_controller.rb:15
+  [1m[36mActiveStorage::Attachment Load (0.5ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "Score"], ["name", "music_score"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/scores_controller.rb:16
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/scores_controller.rb:16
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.54ms)
+Completed 200 OK in 7ms (Views: 0.9ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/api/v1/scores/2" for 127.0.0.1 at 2018-08-08 20:49:11 -0400
+Processing by Api::V1::ScoresController#show as */*
+  Parameters: {"id"=>"2"}
+  [1m[36mScore Load (0.3ms)[0m  [1m[34mSELECT  "scores".* FROM "scores" WHERE "scores"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/scores_controller.rb:15
+  [1m[36mActiveStorage::Attachment Load (0.5ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "Score"], ["name", "music_score"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/scores_controller.rb:16
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/scores_controller.rb:16
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.26ms)
+Completed 200 OK in 6ms (Views: 0.6ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/api/v1/scores/2" for 127.0.0.1 at 2018-08-08 20:49:51 -0400
+Processing by Api::V1::ScoresController#show as */*
+  Parameters: {"id"=>"2"}
+  [1m[36mScore Load (0.2ms)[0m  [1m[34mSELECT  "scores".* FROM "scores" WHERE "scores"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/scores_controller.rb:15
+  [1m[36mActiveStorage::Attachment Load (0.5ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "Score"], ["name", "music_score"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/scores_controller.rb:16
+  [1m[36mActiveStorage::Blob Load (0.6ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/scores_controller.rb:16
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.78ms)
+Completed 200 OK in 9ms (Views: 1.4ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/api/v1/users/1" for 127.0.0.1 at 2018-08-08 21:00:59 -0400
+Processing by Api::V1::UsersController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (5.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:11
+[active_model_serializers]   [1m[36mScore Load (7.2ms)[0m  [1m[34mSELECT "scores".* FROM "scores" WHERE "scores"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/users_controller.rb:12
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (10.41ms)
+Completed 200 OK in 17ms (Views: 3.8ms | ActiveRecord: 12.3ms)
+
+
+Started GET "/api/v1/users/1" for 127.0.0.1 at 2018-08-08 21:01:37 -0400
+Processing by Api::V1::UsersController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:11
+[active_model_serializers]   [1m[36mScore Load (0.5ms)[0m  [1m[34mSELECT "scores".* FROM "scores" WHERE "scores"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/users_controller.rb:12
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (11.21ms)
+Completed 200 OK in 14ms (Views: 11.7ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/api/v1/scores" for 127.0.0.1 at 2018-08-08 21:05:24 -0400
+Processing by Api::V1::ScoresController#index as HTML
+  [1m[36mScore Load (0.3ms)[0m  [1m[34mSELECT "scores".* FROM "scores"[0m
+  ↳ app/controllers/api/v1/scores_controller.rb:6
+[active_model_serializers]   [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/scores_controller.rb:6
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/scores_controller.rb:6
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/scores_controller.rb:6
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/scores_controller.rb:6
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (7.15ms)
+Completed 200 OK in 9ms (Views: 6.8ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/api/v1/users/1" for 127.0.0.1 at 2018-08-08 21:05:53 -0400
+Processing by Api::V1::UsersController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:11
+[active_model_serializers]   [1m[36mScore Load (0.2ms)[0m  [1m[34mSELECT "scores".* FROM "scores" WHERE "scores"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/users_controller.rb:12
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (2.78ms)
+Completed 200 OK in 5ms (Views: 3.0ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/v1/scores/3" for 127.0.0.1 at 2018-08-08 21:05:53 -0400
+Started GET "/api/v1/scores/1" for 127.0.0.1 at 2018-08-08 21:05:53 -0400
+Started GET "/api/v1/scores/2" for 127.0.0.1 at 2018-08-08 21:05:53 -0400
+Started GET "/api/v1/scores/4" for 127.0.0.1 at 2018-08-08 21:05:53 -0400
+Processing by Api::V1::ScoresController#show as */*
+  Parameters: {"id"=>"3"}
+  [1m[36mScore Load (0.7ms)[0m  [1m[34mSELECT  "scores".* FROM "scores" WHERE "scores"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/scores_controller.rb:15
+  [1m[36mActiveStorage::Attachment Load (8.3ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 3], ["record_type", "Score"], ["name", "music_score"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/scores_controller.rb:16
+  [1m[36mActiveStorage::Blob Load (1.7ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/scores_controller.rb:16
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.43ms)
+Completed 200 OK in 29ms (Views: 0.9ms | ActiveRecord: 10.7ms)
+
+
+Processing by Api::V1::ScoresController#show as */*
+  Parameters: {"id"=>"2"}
+  [1m[36mScore Load (1.1ms)[0m  [1m[34mSELECT  "scores".* FROM "scores" WHERE "scores"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/scores_controller.rb:15
+  [1m[36mActiveStorage::Attachment Load (2.1ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "Score"], ["name", "music_score"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/scores_controller.rb:16
+Processing by Api::V1::ScoresController#show as */*
+  Parameters: {"id"=>"1"}
+Processing by Api::V1::ScoresController#show as */*
+  Parameters: {"id"=>"4"}
+  [1m[36mScore Load (1.1ms)[0m  [1m[34mSELECT  "scores".* FROM "scores" WHERE "scores"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/scores_controller.rb:15
+  [1m[36mScore Load (1.9ms)[0m  [1m[34mSELECT  "scores".* FROM "scores" WHERE "scores"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Load (1.9ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/scores_controller.rb:15
+  ↳ app/controllers/api/v1/scores_controller.rb:16
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.33ms)
+Completed 200 OK in 16ms (Views: 0.7ms | ActiveRecord: 6.7ms)
+
+
+  [1m[36mActiveStorage::Attachment Load (8.2ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Score"], ["name", "music_score"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/scores_controller.rb:16
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 9.4ms)
+
+
+  
+Module::DelegationError (signed_id delegated to attachment, but attachment is nil):
+  
+app/controllers/api/v1/scores_controller.rb:16:in `show'
+  [1m[36mActiveStorage::Attachment Load (26.6ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 4], ["record_type", "Score"], ["name", "music_score"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/scores_controller.rb:16
+  [1m[36mActiveStorage::Blob Load (0.6ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/scores_controller.rb:16
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.32ms)
+Completed 200 OK in 45ms (Views: 0.7ms | ActiveRecord: 29.7ms)
+
+
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/davidtenenbaum/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  ↳ /Users/davidtenenbaum/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/davidtenenbaum/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  ↳ /Users/davidtenenbaum/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/davidtenenbaum/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  ↳ /Users/davidtenenbaum/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (229.3ms)[0m  [1m[35mDROP DATABASE IF EXISTS "project-backend_development"[0m
+  ↳ /Users/davidtenenbaum/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (209.5ms)[0m  [1m[35mDROP DATABASE IF EXISTS "project-backend_test"[0m
+  ↳ /Users/davidtenenbaum/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (664.3ms)[0m  [1m[35mCREATE DATABASE "project-backend_development" ENCODING = 'unicode'[0m
+  ↳ /Users/davidtenenbaum/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (431.1ms)[0m  [1m[35mCREATE DATABASE "project-backend_test" ENCODING = 'unicode'[0m
+  ↳ /Users/davidtenenbaum/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (5.5ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  ↳ /Users/davidtenenbaum/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (3.6ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ /Users/davidtenenbaum/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5935385035921725825)[0m
+  ↳ /Users/davidtenenbaum/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/davidtenenbaum/.rvm/gems/ruby-2.3.3/bin/rake:23
+Migrating to CreateUsers (20180807231411)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/davidtenenbaum/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (5.6ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "username" character varying, "password_digest" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20180807231411_create_users.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20180807231411"]]
+  ↳ /Users/davidtenenbaum/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Users/davidtenenbaum/.rvm/gems/ruby-2.3.3/bin/rake:23
+Migrating to CreateScores (20180807232442)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/davidtenenbaum/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (6.2ms)[0m  [1m[35mCREATE TABLE "scores" ("id" bigserial primary key, "title" character varying, "composer" character varying, "user_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20180807232442_create_scores.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20180807232442"]]
+  ↳ /Users/davidtenenbaum/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Users/davidtenenbaum/.rvm/gems/ruby-2.3.3/bin/rake:23
+Migrating to CreateActiveStorageTables (20180808123450)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/davidtenenbaum/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (6.0ms)[0m  [1m[35mCREATE TABLE "active_storage_blobs" ("id" bigserial primary key, "key" character varying NOT NULL, "filename" character varying NOT NULL, "content_type" character varying, "metadata" text, "byte_size" bigint NOT NULL, "checksum" character varying NOT NULL, "created_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20180808123450_create_active_storage_tables.active_storage.rb:4
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_active_storage_blobs_on_key" ON "active_storage_blobs"  ("key")[0m
+  ↳ db/migrate/20180808123450_create_active_storage_tables.active_storage.rb:4
+  [1m[35m (4.4ms)[0m  [1m[35mCREATE TABLE "active_storage_attachments" ("id" bigserial primary key, "name" character varying NOT NULL, "record_type" character varying NOT NULL, "record_id" bigint NOT NULL, "blob_id" bigint NOT NULL, "created_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20180808123450_create_active_storage_tables.active_storage.rb:16
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE  INDEX  "index_active_storage_attachments_on_blob_id" ON "active_storage_attachments"  ("blob_id")[0m
+  ↳ db/migrate/20180808123450_create_active_storage_tables.active_storage.rb:16
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_active_storage_attachments_uniqueness" ON "active_storage_attachments"  ("record_type", "record_id", "name", "blob_id")[0m
+  ↳ db/migrate/20180808123450_create_active_storage_tables.active_storage.rb:16
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20180808123450"]]
+  ↳ /Users/davidtenenbaum/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Users/davidtenenbaum/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ /Users/davidtenenbaum/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/davidtenenbaum/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2018-08-09 01:06:37.491002"], ["updated_at", "2018-08-09 01:06:37.491002"]]
+  ↳ /Users/davidtenenbaum/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Users/davidtenenbaum/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(5935385035921725825)[0m
+  ↳ /Users/davidtenenbaum/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/davidtenenbaum/.rvm/gems/ruby-2.3.3/bin/rake:23
+Started GET "/api/v1/users/1" for 127.0.0.1 at 2018-08-08 21:06:50 -0400
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/davidtenenbaum/.rvm/gems/ruby-2.3.3/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+Processing by Api::V1::UsersController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:11
+Completed 404 Not Found in 16ms (ActiveRecord: 8.1ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=1):
+  
+app/controllers/api/v1/users_controller.rb:11:in `show'
+Started GET "/api/v1/users/1" for 127.0.0.1 at 2018-08-08 21:06:52 -0400
+Processing by Api::V1::UsersController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:11
+Completed 404 Not Found in 3ms (ActiveRecord: 1.6ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=1):
+  
+app/controllers/api/v1/users_controller.rb:11:in `show'
+Started GET "/api/v1/users/1" for 127.0.0.1 at 2018-08-08 21:07:45 -0400
+Processing by Api::V1::UsersController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:11
+Completed 404 Not Found in 2ms (ActiveRecord: 0.9ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=1):
+  
+app/controllers/api/v1/users_controller.rb:11:in `show'
+Started GET "/api/v1/users/1" for 127.0.0.1 at 2018-08-08 21:07:59 -0400
+Processing by Api::V1::UsersController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:11
+Completed 404 Not Found in 2ms (ActiveRecord: 0.9ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=1):
+  
+app/controllers/api/v1/users_controller.rb:11:in `show'
+Started POST "/api/v1/scores" for 127.0.0.1 at 2018-08-08 21:08:10 -0400
+Processing by Api::V1::ScoresController#create as */*
+  Parameters: {"title"=>"david", "composer"=>"tenenbaum", "user_id"=>"1", "music_score"=>#<ActionDispatch::Http::UploadedFile:0x007fa23a045770 @tempfile=#<Tempfile:/var/folders/09/n8kzsr3j19n0ck_x3185l3f80000gn/T/RackMultipart20180808-71651-t50s0b.pdf>, @original_filename="bottesini.pdf", @content_type="application/pdf", @headers="Content-Disposition: form-data; name=\"music_score\"; filename=\"bottesini.pdf\"\r\nContent-Type: application/pdf\r\n">}
+[36m  Disk Storage (38.9ms) [0m[32mUploaded file to key: 1wCsgNWUzdFeYEu1r7MPLKoW (checksum: HdtP/+g9VG+XTFRyGe/wvw==)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/scores_controller.rb:10
+  [1m[36mActiveStorage::Blob Create (2.3ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["key", "1wCsgNWUzdFeYEu1r7MPLKoW"], ["filename", "bottesini.pdf"], ["content_type", "application/pdf"], ["metadata", "{\"identified\":true}"], ["byte_size", 11252145], ["checksum", "HdtP/+g9VG+XTFRyGe/wvw=="], ["created_at", "2018-08-09 01:08:11.065209"]]
+  ↳ app/controllers/api/v1/scores_controller.rb:10
+  [1m[35m (5.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/scores_controller.rb:10
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/scores_controller.rb:10
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/scores_controller.rb:10
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/scores_controller.rb:10
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/scores_controller.rb:10
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/v1/scores_controller.rb:10
+[active_model_serializers] Rendered ScoreSerializer with ActiveModelSerializers::Adapter::Attributes (8.86ms)
+Completed 200 OK in 203ms (Views: 20.9ms | ActiveRecord: 25.0ms)
+
+
+Started GET "/api/v1/scores" for 127.0.0.1 at 2018-08-08 21:10:26 -0400
+Processing by Api::V1::ScoresController#index as HTML
+  [1m[36mScore Load (5.3ms)[0m  [1m[34mSELECT "scores".* FROM "scores"[0m
+  ↳ app/controllers/api/v1/scores_controller.rb:6
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.13ms)
+Completed 200 OK in 8ms (Views: 2.0ms | ActiveRecord: 5.3ms)
+
+
+Started GET "/api/v1/scores" for 127.0.0.1 at 2018-08-08 21:10:29 -0400
+Processing by Api::V1::ScoresController#index as HTML
+  [1m[36mScore Load (0.4ms)[0m  [1m[34mSELECT "scores".* FROM "scores"[0m
+  ↳ app/controllers/api/v1/scores_controller.rb:6
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.06ms)
+Completed 200 OK in 2ms (Views: 1.0ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/api/v1/scores" for 127.0.0.1 at 2018-08-08 21:10:34 -0400
+Processing by Api::V1::ScoresController#create as */*
+  Parameters: {"title"=>"david", "composer"=>"tenenbaum", "user_id"=>"1", "music_score"=>#<ActionDispatch::Http::UploadedFile:0x007fa23a015b88 @tempfile=#<Tempfile:/var/folders/09/n8kzsr3j19n0ck_x3185l3f80000gn/T/RackMultipart20180808-71651-14w4ack.pdf>, @original_filename="bottesini.pdf", @content_type="application/pdf", @headers="Content-Disposition: form-data; name=\"music_score\"; filename=\"bottesini.pdf\"\r\nContent-Type: application/pdf\r\n">}
+[36m  Disk Storage (40.1ms) [0m[32mUploaded file to key: mvY7JxBxYFvpk26523m52vFM (checksum: HdtP/+g9VG+XTFRyGe/wvw==)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/scores_controller.rb:10
+  [1m[36mActiveStorage::Blob Create (1.0ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["key", "mvY7JxBxYFvpk26523m52vFM"], ["filename", "bottesini.pdf"], ["content_type", "application/pdf"], ["metadata", "{\"identified\":true}"], ["byte_size", 11252145], ["checksum", "HdtP/+g9VG+XTFRyGe/wvw=="], ["created_at", "2018-08-09 01:10:34.264104"]]
+  ↳ app/controllers/api/v1/scores_controller.rb:10
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/scores_controller.rb:10
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/scores_controller.rb:10
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/scores_controller.rb:10
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/scores_controller.rb:10
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/scores_controller.rb:10
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/v1/scores_controller.rb:10
+[active_model_serializers] Rendered ScoreSerializer with ActiveModelSerializers::Adapter::Attributes (0.18ms)
+Completed 200 OK in 72ms (Views: 0.6ms | ActiveRecord: 3.1ms)
+
+
+Started GET "/api/v1/scores" for 127.0.0.1 at 2018-08-08 21:10:36 -0400
+Processing by Api::V1::ScoresController#index as HTML
+  [1m[36mScore Load (1.2ms)[0m  [1m[34mSELECT "scores".* FROM "scores"[0m
+  ↳ app/controllers/api/v1/scores_controller.rb:6
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.06ms)
+Completed 200 OK in 4ms (Views: 2.2ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/api/v1/users" for 127.0.0.1 at 2018-08-08 21:10:40 -0400
+Processing by Api::V1::UsersController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.05ms)
+Completed 200 OK in 1ms (Views: 1.0ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/api/v1/scores" for 127.0.0.1 at 2018-08-08 21:11:03 -0400
+Processing by Api::V1::ScoresController#create as */*
+  Parameters: {"title"=>"dasd", "composer"=>"asdas", "user_id"=>"1", "music_score"=>#<ActionDispatch::Http::UploadedFile:0x007fa23ab46f98 @tempfile=#<Tempfile:/var/folders/09/n8kzsr3j19n0ck_x3185l3f80000gn/T/RackMultipart20180808-71651-1jwd3rp.pdf>, @original_filename="bottesini.pdf", @content_type="application/pdf", @headers="Content-Disposition: form-data; name=\"music_score\"; filename=\"bottesini.pdf\"\r\nContent-Type: application/pdf\r\n">}
+[36m  Disk Storage (39.2ms) [0m[32mUploaded file to key: ZNBvPeTwHBnTJQJe93RaTU6V (checksum: HdtP/+g9VG+XTFRyGe/wvw==)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/scores_controller.rb:10
+  [1m[36mActiveStorage::Blob Create (0.5ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["key", "ZNBvPeTwHBnTJQJe93RaTU6V"], ["filename", "bottesini.pdf"], ["content_type", "application/pdf"], ["metadata", "{\"identified\":true}"], ["byte_size", 11252145], ["checksum", "HdtP/+g9VG+XTFRyGe/wvw=="], ["created_at", "2018-08-09 01:11:03.497110"]]
+  ↳ app/controllers/api/v1/scores_controller.rb:10
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/scores_controller.rb:10
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/scores_controller.rb:10
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/scores_controller.rb:10
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/scores_controller.rb:10
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/scores_controller.rb:10
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/v1/scores_controller.rb:10
+[active_model_serializers] Rendered ScoreSerializer with ActiveModelSerializers::Adapter::Attributes (0.16ms)
+Completed 200 OK in 71ms (Views: 0.5ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/api/v1/users" for 127.0.0.1 at 2018-08-08 21:11:06 -0400
+Processing by Api::V1::UsersController#index as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.14ms)
+Completed 200 OK in 4ms (Views: 2.4ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/api/v1/users" for 127.0.0.1 at 2018-08-08 21:11:07 -0400
+Processing by Api::V1::UsersController#index as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.35ms)
+Completed 200 OK in 5ms (Views: 3.4ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/api/v1/users" for 127.0.0.1 at 2018-08-08 21:11:09 -0400
+Processing by Api::V1::UsersController#index as HTML
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.1ms)
+Completed 200 OK in 6ms (Views: 4.1ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/api/v1/users" for 127.0.0.1 at 2018-08-08 21:11:14 -0400
+Processing by Api::V1::UsersController#index as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.19ms)
+Completed 200 OK in 3ms (Views: 2.1ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/api/v1/users" for 127.0.0.1 at 2018-08-08 21:11:40 -0400
+Processing by Api::V1::UsersController#index as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.09ms)
+Completed 200 OK in 5ms (Views: 3.8ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/api/v1/users" for 127.0.0.1 at 2018-08-08 21:11:53 -0400
+Processing by Api::V1::UsersController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.19ms)
+Completed 200 OK in 4ms (Views: 3.2ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/api/v1/scores" for 127.0.0.1 at 2018-08-08 21:12:04 -0400
+Processing by Api::V1::ScoresController#create as */*
+  Parameters: {"title"=>"dasd", "composer"=>"asdas", "user_id"=>"1", "music_score"=>#<ActionDispatch::Http::UploadedFile:0x007fa23a381740 @tempfile=#<Tempfile:/var/folders/09/n8kzsr3j19n0ck_x3185l3f80000gn/T/RackMultipart20180808-71651-jyiy2q.png>, @original_filename="1.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"music_score\"; filename=\"1.png\"\r\nContent-Type: image/png\r\n">}
+[36m  Disk Storage (2.1ms) [0m[32mUploaded file to key: bG9WZBAgKyXUmeLu5CyTsP1P (checksum: 9B001X0wVFhqso6U3d7gJQ==)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/scores_controller.rb:10
+  [1m[36mActiveStorage::Blob Create (0.4ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["key", "bG9WZBAgKyXUmeLu5CyTsP1P"], ["filename", "1.png"], ["content_type", "image/png"], ["metadata", "{\"identified\":true}"], ["byte_size", 380793], ["checksum", "9B001X0wVFhqso6U3d7gJQ=="], ["created_at", "2018-08-09 01:12:04.026832"]]
+  ↳ app/controllers/api/v1/scores_controller.rb:10
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/scores_controller.rb:10
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/scores_controller.rb:10
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/scores_controller.rb:10
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/scores_controller.rb:10
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/scores_controller.rb:10
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/v1/scores_controller.rb:10
+[active_model_serializers] Rendered ScoreSerializer with ActiveModelSerializers::Adapter::Attributes (0.19ms)
+Completed 200 OK in 15ms (Views: 0.6ms | ActiveRecord: 3.6ms)
+
+
+Started GET "/api/v1/users" for 127.0.0.1 at 2018-08-08 21:12:06 -0400
+Processing by Api::V1::UsersController#index as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.13ms)
+Completed 200 OK in 4ms (Views: 2.4ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/api/v1/users" for 127.0.0.1 at 2018-08-08 21:13:48 -0400
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/davidtenenbaum/.rvm/gems/ruby-2.3.3/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+Processing by Api::V1::UsersController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.13ms)
+Completed 200 OK in 13ms (Views: 6.5ms | ActiveRecord: 2.6ms)
+
+
+Started POST "/api/v1/scores" for 127.0.0.1 at 2018-08-08 21:14:01 -0400
+Processing by Api::V1::ScoresController#create as */*
+  Parameters: {"title"=>"test", "composer"=>"test", "user_id"=>"1", "music_score"=>#<ActionDispatch::Http::UploadedFile:0x007f82c17bfd68 @tempfile=#<Tempfile:/var/folders/09/n8kzsr3j19n0ck_x3185l3f80000gn/T/RackMultipart20180808-71813-upkeii.png>, @original_filename="1.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"music_score\"; filename=\"1.png\"\r\nContent-Type: image/png\r\n">}
+[36m  Disk Storage (2.3ms) [0m[32mUploaded file to key: WSL4NocjBLiHy9CUSwDpmDTY (checksum: 9B001X0wVFhqso6U3d7gJQ==)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/scores_controller.rb:10
+  [1m[36mActiveStorage::Blob Create (0.7ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["key", "WSL4NocjBLiHy9CUSwDpmDTY"], ["filename", "1.png"], ["content_type", "image/png"], ["metadata", "{\"identified\":true}"], ["byte_size", 380793], ["checksum", "9B001X0wVFhqso6U3d7gJQ=="], ["created_at", "2018-08-09 01:14:02.091679"]]
+  ↳ app/controllers/api/v1/scores_controller.rb:10
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/scores_controller.rb:10
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/scores_controller.rb:10
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/scores_controller.rb:10
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/scores_controller.rb:10
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/scores_controller.rb:10
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/v1/scores_controller.rb:10
+[active_model_serializers] Rendered ScoreSerializer with ActiveModelSerializers::Adapter::Attributes (14.47ms)
+Completed 200 OK in 139ms (Views: 26.8ms | ActiveRecord: 26.1ms)
+
+
+Started GET "/api/v1/users" for 127.0.0.1 at 2018-08-08 21:14:03 -0400
+Processing by Api::V1::UsersController#index as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.6ms)
+Completed 200 OK in 5ms (Views: 3.5ms | ActiveRecord: 0.8ms)
+
+
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/davidtenenbaum/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  ↳ /Users/davidtenenbaum/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/davidtenenbaum/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  ↳ /Users/davidtenenbaum/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/davidtenenbaum/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  ↳ /Users/davidtenenbaum/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (210.3ms)[0m  [1m[35mDROP DATABASE IF EXISTS "project-backend_development"[0m
+  ↳ /Users/davidtenenbaum/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (211.6ms)[0m  [1m[35mDROP DATABASE IF EXISTS "project-backend_test"[0m
+  ↳ /Users/davidtenenbaum/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (475.2ms)[0m  [1m[35mCREATE DATABASE "project-backend_development" ENCODING = 'unicode'[0m
+  ↳ /Users/davidtenenbaum/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (473.7ms)[0m  [1m[35mCREATE DATABASE "project-backend_test" ENCODING = 'unicode'[0m
+  ↳ /Users/davidtenenbaum/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (6.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  ↳ /Users/davidtenenbaum/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (4.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ /Users/davidtenenbaum/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5935385035921725825)[0m
+  ↳ /Users/davidtenenbaum/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/davidtenenbaum/.rvm/gems/ruby-2.3.3/bin/rake:23
+Migrating to CreateUsers (20180807231411)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/davidtenenbaum/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (4.8ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "username" character varying, "password_digest" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20180807231411_create_users.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20180807231411"]]
+  ↳ /Users/davidtenenbaum/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Users/davidtenenbaum/.rvm/gems/ruby-2.3.3/bin/rake:23
+Migrating to CreateScores (20180807232442)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/davidtenenbaum/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (3.7ms)[0m  [1m[35mCREATE TABLE "scores" ("id" bigserial primary key, "title" character varying, "composer" character varying, "user_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20180807232442_create_scores.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20180807232442"]]
+  ↳ /Users/davidtenenbaum/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Users/davidtenenbaum/.rvm/gems/ruby-2.3.3/bin/rake:23
+Migrating to CreateActiveStorageTables (20180808123450)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/davidtenenbaum/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (4.4ms)[0m  [1m[35mCREATE TABLE "active_storage_blobs" ("id" bigserial primary key, "key" character varying NOT NULL, "filename" character varying NOT NULL, "content_type" character varying, "metadata" text, "byte_size" bigint NOT NULL, "checksum" character varying NOT NULL, "created_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20180808123450_create_active_storage_tables.active_storage.rb:4
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_active_storage_blobs_on_key" ON "active_storage_blobs"  ("key")[0m
+  ↳ db/migrate/20180808123450_create_active_storage_tables.active_storage.rb:4
+  [1m[35m (4.0ms)[0m  [1m[35mCREATE TABLE "active_storage_attachments" ("id" bigserial primary key, "name" character varying NOT NULL, "record_type" character varying NOT NULL, "record_id" bigint NOT NULL, "blob_id" bigint NOT NULL, "created_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20180808123450_create_active_storage_tables.active_storage.rb:16
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE  INDEX  "index_active_storage_attachments_on_blob_id" ON "active_storage_attachments"  ("blob_id")[0m
+  ↳ db/migrate/20180808123450_create_active_storage_tables.active_storage.rb:16
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_active_storage_attachments_uniqueness" ON "active_storage_attachments"  ("record_type", "record_id", "name", "blob_id")[0m
+  ↳ db/migrate/20180808123450_create_active_storage_tables.active_storage.rb:16
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20180808123450"]]
+  ↳ /Users/davidtenenbaum/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Users/davidtenenbaum/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ /Users/davidtenenbaum/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/davidtenenbaum/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[36mActiveRecord::InternalMetadata Create (0.6ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2018-08-09 01:16:42.582692"], ["updated_at", "2018-08-09 01:16:42.582692"]]
+  ↳ /Users/davidtenenbaum/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Users/davidtenenbaum/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(5935385035921725825)[0m
+  ↳ /Users/davidtenenbaum/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/davidtenenbaum/.rvm/gems/ruby-2.3.3/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (1.0ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "david"], ["password_digest", "$2a$10$LQyZgIbR1E5xj4QK0XWMoeLZHcjwuuyKFjCRRn0A6iBOXBlT8APXW"], ["created_at", "2018-08-09 01:17:09.169820"], ["updated_at", "2018-08-09 01:17:09.169820"]]
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/api/v1/users" for 127.0.0.1 at 2018-08-08 21:17:59 -0400
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/davidtenenbaum/.rvm/gems/ruby-2.3.3/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+Processing by Api::V1::UsersController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:7
+[active_model_serializers]   [1m[36mScore Load (0.7ms)[0m  [1m[34mSELECT "scores".* FROM "scores" WHERE "scores"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/users_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (13.72ms)
+Completed 200 OK in 46ms (Views: 34.3ms | ActiveRecord: 8.6ms)
+
+
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" LIMIT $1[0m  [["LIMIT", 11]]
+Started POST "/api/v1/scores" for 127.0.0.1 at 2018-08-08 21:19:31 -0400
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/davidtenenbaum/.rvm/gems/ruby-2.3.3/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+Processing by Api::V1::ScoresController#create as */*
+  Parameters: {"title"=>"violin sonata", "composer"=>"back", "user_id"=>"1", "music_score"=>#<ActionDispatch::Http::UploadedFile:0x007f945ee1db98 @tempfile=#<Tempfile:/var/folders/09/n8kzsr3j19n0ck_x3185l3f80000gn/T/RackMultipart20180808-72022-1eng9l0.png>, @original_filename="Screen Shot 2018-07-23 at 7.32.54 PM.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"music_score\"; filename=\"Screen Shot 2018-07-23 at 7.32.54 PM.png\"\r\nContent-Type: image/png\r\n">}
+[36m  Disk Storage (3.7ms) [0m[32mUploaded file to key: SPDGpNovXatU1CcGaY7kTer7 (checksum: +C8H+0AsgGsDhQBFIiHjbg==)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/scores_controller.rb:10
+  [1m[36mActiveStorage::Blob Create (2.2ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["key", "SPDGpNovXatU1CcGaY7kTer7"], ["filename", "Screen Shot 2018-07-23 at 7.32.54 PM.png"], ["content_type", "image/png"], ["metadata", "{\"identified\":true}"], ["byte_size", 343394], ["checksum", "+C8H+0AsgGsDhQBFIiHjbg=="], ["created_at", "2018-08-09 01:19:31.884057"]]
+  ↳ app/controllers/api/v1/scores_controller.rb:10
+  [1m[35m (4.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/scores_controller.rb:10
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/scores_controller.rb:10
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/scores_controller.rb:10
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/scores_controller.rb:10
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/scores_controller.rb:10
+  [1m[36mScore Create (1.0ms)[0m  [1m[32mINSERT INTO "scores" ("title", "composer", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "violin sonata"], ["composer", "back"], ["user_id", 1], ["created_at", "2018-08-09 01:19:31.918432"], ["updated_at", "2018-08-09 01:19:31.918432"]]
+  ↳ app/controllers/api/v1/scores_controller.rb:10
+  [1m[36mActiveStorage::Attachment Create (2.4ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "music_score"], ["record_type", "Score"], ["record_id", 1], ["blob_id", 1], ["created_at", "2018-08-09 01:19:31.921632"]]
+  ↳ app/controllers/api/v1/scores_controller.rb:10
+  [1m[36mScore Update (0.4ms)[0m  [1m[33mUPDATE "scores" SET "updated_at" = $1 WHERE "scores"."id" = $2[0m  [["updated_at", "2018-08-09 01:19:31.926146"], ["id", 1]]
+  ↳ app/controllers/api/v1/scores_controller.rb:10
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/scores_controller.rb:10
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 2b960ee6-e689-4e59-bde3-59d587b623b8) to Async(default) with arguments: #<GlobalID:0x007f945fd61b40 @uri=#<URI::GID gid://project-backend/ActiveStorage::Blob/1>>
+[active_model_serializers] Rendered ScoreSerializer with ActiveModelSerializers::Adapter::Attributes (2.19ms)
+Completed 200 OK in 192ms (Views: 22.0ms | ActiveRecord: 32.5ms)
+
+
+  [1m[36mActiveStorage::Blob Load (1.1ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/davidtenenbaum/.rvm/gems/ruby-2.3.3/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+[ActiveJob] [ActiveStorage::AnalyzeJob] [2b960ee6-e689-4e59-bde3-59d587b623b8] Performing ActiveStorage::AnalyzeJob (Job ID: 2b960ee6-e689-4e59-bde3-59d587b623b8) from Async(default) with arguments: #<GlobalID:0x007f946018e2b8 @uri=#<URI::GID gid://project-backend/ActiveStorage::Blob/1>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [2b960ee6-e689-4e59-bde3-59d587b623b8] [36m  Disk Storage (0.9ms) [0m[34mDownloaded file from key: SPDGpNovXatU1CcGaY7kTer7[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [2b960ee6-e689-4e59-bde3-59d587b623b8] Skipping image analysis because the mini_magick gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [2b960ee6-e689-4e59-bde3-59d587b623b8]   [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [2b960ee6-e689-4e59-bde3-59d587b623b8]   ↳ /Users/davidtenenbaum/.rvm/gems/ruby-2.3.3/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+[ActiveJob] [ActiveStorage::AnalyzeJob] [2b960ee6-e689-4e59-bde3-59d587b623b8]   [1m[36mActiveStorage::Blob Update (0.6ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [2b960ee6-e689-4e59-bde3-59d587b623b8]   ↳ /Users/davidtenenbaum/.rvm/gems/ruby-2.3.3/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+[ActiveJob] [ActiveStorage::AnalyzeJob] [2b960ee6-e689-4e59-bde3-59d587b623b8]   [1m[35m (2.0ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [2b960ee6-e689-4e59-bde3-59d587b623b8]   ↳ /Users/davidtenenbaum/.rvm/gems/ruby-2.3.3/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+[ActiveJob] [ActiveStorage::AnalyzeJob] [2b960ee6-e689-4e59-bde3-59d587b623b8] Performed ActiveStorage::AnalyzeJob (Job ID: 2b960ee6-e689-4e59-bde3-59d587b623b8) from Async(default) in 11.17ms
+Started GET "/api/v1/users" for 127.0.0.1 at 2018-08-08 21:19:33 -0400
+Processing by Api::V1::UsersController#index as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:7
+[active_model_serializers]   [1m[36mScore Load (0.3ms)[0m  [1m[34mSELECT "scores".* FROM "scores" WHERE "scores"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/users_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (7.21ms)
+Completed 200 OK in 12ms (Views: 9.8ms | ActiveRecord: 1.3ms)
+
+
+Started POST "/api/v1/scores" for 127.0.0.1 at 2018-08-08 21:26:33 -0400
+Processing by Api::V1::ScoresController#create as */*
+  Parameters: {"title"=>"cello sonata", "composer"=>"debussy", "user_id"=>"1", "music_score"=>#<ActionDispatch::Http::UploadedFile:0x007f945e857498 @tempfile=#<Tempfile:/var/folders/09/n8kzsr3j19n0ck_x3185l3f80000gn/T/RackMultipart20180808-72022-1bffhti.pdf>, @original_filename="debussy.pdf", @content_type="application/pdf", @headers="Content-Disposition: form-data; name=\"music_score\"; filename=\"debussy.pdf\"\r\nContent-Type: application/pdf\r\n">}
+[36m  Disk Storage (10.5ms) [0m[32mUploaded file to key: BzPJkdxVabwnwYAt3J4QgqZN (checksum: umf1r7RcoyZVazd7K9vkgQ==)[0m
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/scores_controller.rb:10
+  [1m[36mActiveStorage::Blob Create (1.0ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["key", "BzPJkdxVabwnwYAt3J4QgqZN"], ["filename", "debussy.pdf"], ["content_type", "application/pdf"], ["metadata", "{\"identified\":true}"], ["byte_size", 971885], ["checksum", "umf1r7RcoyZVazd7K9vkgQ=="], ["created_at", "2018-08-09 01:26:33.318854"]]
+  ↳ app/controllers/api/v1/scores_controller.rb:10
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/scores_controller.rb:10
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/scores_controller.rb:10
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/scores_controller.rb:10
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/scores_controller.rb:10
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/scores_controller.rb:10
+  [1m[36mScore Create (0.4ms)[0m  [1m[32mINSERT INTO "scores" ("title", "composer", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "cello sonata"], ["composer", "debussy"], ["user_id", 1], ["created_at", "2018-08-09 01:26:33.325474"], ["updated_at", "2018-08-09 01:26:33.325474"]]
+  ↳ app/controllers/api/v1/scores_controller.rb:10
+  [1m[36mActiveStorage::Attachment Create (0.3ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "music_score"], ["record_type", "Score"], ["record_id", 2], ["blob_id", 2], ["created_at", "2018-08-09 01:26:33.326855"]]
+  ↳ app/controllers/api/v1/scores_controller.rb:10
+  [1m[36mScore Update (0.3ms)[0m  [1m[33mUPDATE "scores" SET "updated_at" = $1 WHERE "scores"."id" = $2[0m  [["updated_at", "2018-08-09 01:26:33.327865"], ["id", 2]]
+  ↳ app/controllers/api/v1/scores_controller.rb:10
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/scores_controller.rb:10
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 7b864f84-cf9a-470e-977d-d19cb14dd7a1) to Async(default) with arguments: #<GlobalID:0x007f945f11ed88 @uri=#<URI::GID gid://project-backend/ActiveStorage::Blob/2>>
+[active_model_serializers] Rendered ScoreSerializer with ActiveModelSerializers::Adapter::Attributes (0.34ms)
+Completed 200 OK in 32ms (Views: 1.0ms | ActiveRecord: 4.7ms)
+
+
+  [1m[36mActiveStorage::Blob Load (0.9ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /Users/davidtenenbaum/.rvm/gems/ruby-2.3.3/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+[ActiveJob] [ActiveStorage::AnalyzeJob] [7b864f84-cf9a-470e-977d-d19cb14dd7a1] Performing ActiveStorage::AnalyzeJob (Job ID: 7b864f84-cf9a-470e-977d-d19cb14dd7a1) from Async(default) with arguments: #<GlobalID:0x007f945fc830c0 @uri=#<URI::GID gid://project-backend/ActiveStorage::Blob/2>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [7b864f84-cf9a-470e-977d-d19cb14dd7a1]   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [7b864f84-cf9a-470e-977d-d19cb14dd7a1]   ↳ /Users/davidtenenbaum/.rvm/gems/ruby-2.3.3/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+[ActiveJob] [ActiveStorage::AnalyzeJob] [7b864f84-cf9a-470e-977d-d19cb14dd7a1]   [1m[36mActiveStorage::Blob Update (0.5ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 2]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [7b864f84-cf9a-470e-977d-d19cb14dd7a1]   ↳ /Users/davidtenenbaum/.rvm/gems/ruby-2.3.3/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+[ActiveJob] [ActiveStorage::AnalyzeJob] [7b864f84-cf9a-470e-977d-d19cb14dd7a1]   [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [7b864f84-cf9a-470e-977d-d19cb14dd7a1]   ↳ /Users/davidtenenbaum/.rvm/gems/ruby-2.3.3/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+[ActiveJob] [ActiveStorage::AnalyzeJob] [7b864f84-cf9a-470e-977d-d19cb14dd7a1] Performed ActiveStorage::AnalyzeJob (Job ID: 7b864f84-cf9a-470e-977d-d19cb14dd7a1) from Async(default) in 3.22ms
+Started GET "/api/v1/users" for 127.0.0.1 at 2018-08-08 21:26:36 -0400
+Processing by Api::V1::UsersController#index as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:7
+[active_model_serializers]   [1m[36mScore Load (0.6ms)[0m  [1m[34mSELECT "scores".* FROM "scores" WHERE "scores"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/users_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (4.78ms)
+Completed 200 OK in 8ms (Views: 6.2ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/api/v1/scores" for 127.0.0.1 at 2018-08-08 21:26:41 -0400
+Processing by Api::V1::ScoresController#index as HTML
+  [1m[36mScore Load (0.3ms)[0m  [1m[34mSELECT "scores".* FROM "scores"[0m
+  ↳ app/controllers/api/v1/scores_controller.rb:6
+[active_model_serializers]   [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/scores_controller.rb:6
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/scores_controller.rb:6
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (2.78ms)
+Completed 200 OK in 4ms (Views: 3.5ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/v1/scores/2" for 127.0.0.1 at 2018-08-08 21:26:44 -0400
+Processing by Api::V1::ScoresController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mScore Load (0.3ms)[0m  [1m[34mSELECT  "scores".* FROM "scores" WHERE "scores"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/scores_controller.rb:15
+  [1m[36mActiveStorage::Attachment Load (1.1ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "Score"], ["name", "music_score"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/scores_controller.rb:16
+  [1m[36mActiveStorage::Blob Load (0.5ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/scores_controller.rb:16
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.78ms)
+Completed 200 OK in 42ms (Views: 33.7ms | ActiveRecord: 1.9ms)
+
+
+Started GET "//rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--bab37b4e5a233fe348c4305c6a18553cc83417a9/debussy.pdf" for 127.0.0.1 at 2018-08-08 21:26:57 -0400
+Processing by ActiveStorage::BlobsController#show as PDF
+  Parameters: {"signed_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--bab37b4e5a233fe348c4305c6a18553cc83417a9", "filename"=>"debussy"}
+  [1m[36mActiveStorage::Blob Load (0.4ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /Users/davidtenenbaum/.rvm/gems/ruby-2.3.3/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+[36m  Disk Storage (2.5ms) [0m[34mGenerated URL for file at key: BzPJkdxVabwnwYAt3J4QgqZN (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaDFDZWxCS2EyUjRWbUZpZDI1M1dVRjBNMG8wVVdkeFdrNEdPZ1pGVkE9PSIsImV4cCI6IjIwMTgtMDgtMDlUMDE6MzE6NTcuNDA1WiIsInB1ciI6ImJsb2Jfa2V5In19--bca346bd47a8ad5f0541275f47808292925bd93b/debussy.pdf?content_type=application%2Fpdf&disposition=inline%3B+filename%3D%22debussy.pdf%22%3B+filename%2A%3DUTF-8%27%27debussy.pdf)[0m
+Redirected to http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaDFDZWxCS2EyUjRWbUZpZDI1M1dVRjBNMG8wVVdkeFdrNEdPZ1pGVkE9PSIsImV4cCI6IjIwMTgtMDgtMDlUMDE6MzE6NTcuNDA1WiIsInB1ciI6ImJsb2Jfa2V5In19--bca346bd47a8ad5f0541275f47808292925bd93b/debussy.pdf?content_type=application%2Fpdf&disposition=inline%3B+filename%3D%22debussy.pdf%22%3B+filename%2A%3DUTF-8%27%27debussy.pdf
+Completed 302 Found in 6ms (ActiveRecord: 0.4ms)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaDFDZWxCS2EyUjRWbUZpZDI1M1dVRjBNMG8wVVdkeFdrNEdPZ1pGVkE9PSIsImV4cCI6IjIwMTgtMDgtMDlUMDE6MzE6NTcuNDA1WiIsInB1ciI6ImJsb2Jfa2V5In19--bca346bd47a8ad5f0541275f47808292925bd93b/debussy.pdf?content_type=application%2Fpdf&disposition=inline%3B+filename%3D%22debussy.pdf%22%3B+filename%2A%3DUTF-8%27%27debussy.pdf" for 127.0.0.1 at 2018-08-08 21:26:57 -0400
+Processing by ActiveStorage::DiskController#show as PDF
+  Parameters: {"content_type"=>"application/pdf", "disposition"=>"inline; filename=\"debussy.pdf\"; filename*=UTF-8''debussy.pdf", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaDFDZWxCS2EyUjRWbUZpZDI1M1dVRjBNMG8wVVdkeFdrNEdPZ1pGVkE9PSIsImV4cCI6IjIwMTgtMDgtMDlUMDE6MzE6NTcuNDA1WiIsInB1ciI6ImJsb2Jfa2V5In19--bca346bd47a8ad5f0541275f47808292925bd93b", "filename"=>"debussy"}
+[36m  Disk Storage (1.5ms) [0m[34mDownloaded file from key: BzPJkdxVabwnwYAt3J4QgqZN[0m
+Completed 200 OK in 3ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/scores/2" for 127.0.0.1 at 2018-08-08 21:29:20 -0400
+Processing by Api::V1::ScoresController#show as */*
+  Parameters: {"id"=>"2"}
+  [1m[36mScore Load (0.4ms)[0m  [1m[34mSELECT  "scores".* FROM "scores" WHERE "scores"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/scores_controller.rb:15
+  [1m[36mActiveStorage::Attachment Load (0.6ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "Score"], ["name", "music_score"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/scores_controller.rb:16
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/scores_controller.rb:16
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.36ms)
+Completed 200 OK in 6ms (Views: 0.8ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/api/v1/scores/2" for 127.0.0.1 at 2018-08-08 21:29:26 -0400
+Processing by Api::V1::ScoresController#show as */*
+  Parameters: {"id"=>"2"}
+  [1m[36mScore Load (0.3ms)[0m  [1m[34mSELECT  "scores".* FROM "scores" WHERE "scores"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/scores_controller.rb:15
+  [1m[36mActiveStorage::Attachment Load (0.7ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "Score"], ["name", "music_score"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/scores_controller.rb:16
+  [1m[36mActiveStorage::Blob Load (0.5ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/scores_controller.rb:16
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.87ms)
+Completed 200 OK in 8ms (Views: 1.5ms | ActiveRecord: 1.6ms)
+
+
