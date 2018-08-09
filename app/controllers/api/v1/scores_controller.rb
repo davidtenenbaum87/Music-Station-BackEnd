@@ -18,6 +18,12 @@ class Api::V1::ScoresController < ApplicationController
     render json: @json
   end
 
+  def destroy
+    @score = Score.find(params[:id])
+    @score.destroy
+    render json: Score.all
+  end
+
   private
 
   def score_params
