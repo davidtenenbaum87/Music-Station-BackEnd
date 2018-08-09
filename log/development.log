@@ -15688,3 +15688,135 @@ Processing by Api::V1::ScoresController#show as */*
 Completed 200 OK in 8ms (Views: 1.5ms | ActiveRecord: 1.6ms)
 
 
+Started GET "/api/v1/scores/2" for 127.0.0.1 at 2018-08-08 23:23:41 -0400
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/davidtenenbaum/.rvm/gems/ruby-2.3.3/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+Processing by Api::V1::ScoresController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mScore Load (0.7ms)[0m  [1m[34mSELECT  "scores".* FROM "scores" WHERE "scores"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/scores_controller.rb:15
+  [1m[36mActiveStorage::Attachment Load (1.0ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "Score"], ["name", "music_score"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/scores_controller.rb:16
+  [1m[36mActiveStorage::Blob Load (0.5ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/scores_controller.rb:16
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.54ms)
+Completed 200 OK in 144ms (Views: 7.8ms | ActiveRecord: 22.1ms)
+
+
+Started GET "/api/v1/scores" for 127.0.0.1 at 2018-08-08 23:23:43 -0400
+Processing by Api::V1::ScoresController#index as HTML
+  [1m[36mScore Load (0.7ms)[0m  [1m[34mSELECT "scores".* FROM "scores"[0m
+  ↳ app/controllers/api/v1/scores_controller.rb:6
+[active_model_serializers]   [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/scores_controller.rb:6
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/scores_controller.rb:6
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (26.77ms)
+Completed 200 OK in 49ms (Views: 38.5ms | ActiveRecord: 10.1ms)
+
+
+Started GET "/api/v1/users" for 127.0.0.1 at 2018-08-08 23:23:44 -0400
+Processing by Api::V1::UsersController#index as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:7
+[active_model_serializers]   [1m[36mScore Load (0.3ms)[0m  [1m[34mSELECT "scores".* FROM "scores" WHERE "scores"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/users_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (9.71ms)
+Completed 200 OK in 15ms (Views: 13.0ms | ActiveRecord: 1.2ms)
+
+
+Started POST "/api/v1/scores" for 127.0.0.1 at 2018-08-08 23:23:58 -0400
+Processing by Api::V1::ScoresController#create as */*
+  Parameters: {"title"=>"mariah", "composer"=>"carey", "user_id"=>"1", "music_score"=>#<ActionDispatch::Http::UploadedFile:0x007f8bd662f458 @tempfile=#<Tempfile:/var/folders/09/n8kzsr3j19n0ck_x3185l3f80000gn/T/RackMultipart20180808-74906-awgmdg.pdf>, @original_filename="debussy.pdf", @content_type="application/pdf", @headers="Content-Disposition: form-data; name=\"music_score\"; filename=\"debussy.pdf\"\r\nContent-Type: application/pdf\r\n">}
+[36m  Disk Storage (5.8ms) [0m[32mUploaded file to key: ptTvEA29dneD7WqqZE72YUcK (checksum: umf1r7RcoyZVazd7K9vkgQ==)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/scores_controller.rb:10
+  [1m[36mActiveStorage::Blob Create (1.4ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["key", "ptTvEA29dneD7WqqZE72YUcK"], ["filename", "debussy.pdf"], ["content_type", "application/pdf"], ["metadata", "{\"identified\":true}"], ["byte_size", 971885], ["checksum", "umf1r7RcoyZVazd7K9vkgQ=="], ["created_at", "2018-08-09 03:23:58.130925"]]
+  ↳ app/controllers/api/v1/scores_controller.rb:10
+  [1m[35m (2.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/scores_controller.rb:10
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/scores_controller.rb:10
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/scores_controller.rb:10
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/scores_controller.rb:10
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/scores_controller.rb:10
+  [1m[36mScore Create (0.5ms)[0m  [1m[32mINSERT INTO "scores" ("title", "composer", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "mariah"], ["composer", "carey"], ["user_id", 1], ["created_at", "2018-08-09 03:23:58.139669"], ["updated_at", "2018-08-09 03:23:58.139669"]]
+  ↳ app/controllers/api/v1/scores_controller.rb:10
+  [1m[36mActiveStorage::Attachment Create (0.7ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "music_score"], ["record_type", "Score"], ["record_id", 3], ["blob_id", 3], ["created_at", "2018-08-09 03:23:58.141412"]]
+  ↳ app/controllers/api/v1/scores_controller.rb:10
+  [1m[36mScore Update (0.5ms)[0m  [1m[33mUPDATE "scores" SET "updated_at" = $1 WHERE "scores"."id" = $2[0m  [["updated_at", "2018-08-09 03:23:58.143006"], ["id", 3]]
+  ↳ app/controllers/api/v1/scores_controller.rb:10
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/scores_controller.rb:10
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 7a6aa7ed-cdfd-43c8-8f5e-1d3945179200) to Async(default) with arguments: #<GlobalID:0x007f8bd79b4c08 @uri=#<URI::GID gid://project-backend/ActiveStorage::Blob/3>>
+[active_model_serializers] Rendered ScoreSerializer with ActiveModelSerializers::Adapter::Attributes (0.48ms)
+Completed 200 OK in 121ms (Views: 1.2ms | ActiveRecord: 7.0ms)
+
+
+  [1m[36mActiveStorage::Blob Load (1.3ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ /Users/davidtenenbaum/.rvm/gems/ruby-2.3.3/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+[ActiveJob] [ActiveStorage::AnalyzeJob] [7a6aa7ed-cdfd-43c8-8f5e-1d3945179200] Performing ActiveStorage::AnalyzeJob (Job ID: 7a6aa7ed-cdfd-43c8-8f5e-1d3945179200) from Async(default) with arguments: #<GlobalID:0x007f8bd7a89a20 @uri=#<URI::GID gid://project-backend/ActiveStorage::Blob/3>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [7a6aa7ed-cdfd-43c8-8f5e-1d3945179200]   [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [7a6aa7ed-cdfd-43c8-8f5e-1d3945179200]   ↳ /Users/davidtenenbaum/.rvm/gems/ruby-2.3.3/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+[ActiveJob] [ActiveStorage::AnalyzeJob] [7a6aa7ed-cdfd-43c8-8f5e-1d3945179200]   [1m[36mActiveStorage::Blob Update (0.6ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 3]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [7a6aa7ed-cdfd-43c8-8f5e-1d3945179200]   ↳ /Users/davidtenenbaum/.rvm/gems/ruby-2.3.3/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+[ActiveJob] [ActiveStorage::AnalyzeJob] [7a6aa7ed-cdfd-43c8-8f5e-1d3945179200]   [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [7a6aa7ed-cdfd-43c8-8f5e-1d3945179200]   ↳ /Users/davidtenenbaum/.rvm/gems/ruby-2.3.3/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+[ActiveJob] [ActiveStorage::AnalyzeJob] [7a6aa7ed-cdfd-43c8-8f5e-1d3945179200] Performed ActiveStorage::AnalyzeJob (Job ID: 7a6aa7ed-cdfd-43c8-8f5e-1d3945179200) from Async(default) in 8.11ms
+Started GET "/api/v1/users" for 127.0.0.1 at 2018-08-08 23:24:00 -0400
+Processing by Api::V1::UsersController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:7
+[active_model_serializers]   [1m[36mScore Load (0.4ms)[0m  [1m[34mSELECT "scores".* FROM "scores" WHERE "scores"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/users_controller.rb:7
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (3.72ms)
+Completed 200 OK in 6ms (Views: 4.6ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/api/v1/scores" for 127.0.0.1 at 2018-08-08 23:24:05 -0400
+Processing by Api::V1::ScoresController#index as HTML
+  [1m[36mScore Load (0.3ms)[0m  [1m[34mSELECT "scores".* FROM "scores"[0m
+  ↳ app/controllers/api/v1/scores_controller.rb:6
+[active_model_serializers]   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/scores_controller.rb:6
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/scores_controller.rb:6
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/scores_controller.rb:6
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (3.63ms)
+Completed 200 OK in 5ms (Views: 4.6ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/api/v1/scores/3" for 127.0.0.1 at 2018-08-08 23:24:08 -0400
+Processing by Api::V1::ScoresController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mScore Load (0.4ms)[0m  [1m[34mSELECT  "scores".* FROM "scores" WHERE "scores"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/scores_controller.rb:15
+  [1m[36mActiveStorage::Attachment Load (1.2ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 3], ["record_type", "Score"], ["name", "music_score"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/scores_controller.rb:16
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/scores_controller.rb:16
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.32ms)
+Completed 200 OK in 8ms (Views: 0.8ms | ActiveRecord: 2.0ms)
+
+
+Started GET "//rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBDQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--cc896681a1db218a2125f6f6e77998c945e193d3/debussy.pdf" for 127.0.0.1 at 2018-08-08 23:24:20 -0400
+Processing by ActiveStorage::BlobsController#show as PDF
+  Parameters: {"signed_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBDQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--cc896681a1db218a2125f6f6e77998c945e193d3", "filename"=>"debussy"}
+  [1m[36mActiveStorage::Blob Load (1.4ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ /Users/davidtenenbaum/.rvm/gems/ruby-2.3.3/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+[36m  Disk Storage (1.5ms) [0m[34mGenerated URL for file at key: ptTvEA29dneD7WqqZE72YUcK (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaDF3ZEZSMlJVRXlPV1J1WlVRM1YzRnhXa1UzTWxsVlkwc0dPZ1pGVkE9PSIsImV4cCI6IjIwMTgtMDgtMDlUMDM6Mjk6MjAuODI1WiIsInB1ciI6ImJsb2Jfa2V5In19--49d42646e297bbb9f201113056e00dab0f2a6c77/debussy.pdf?content_type=application%2Fpdf&disposition=inline%3B+filename%3D%22debussy.pdf%22%3B+filename%2A%3DUTF-8%27%27debussy.pdf)[0m
+Redirected to http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaDF3ZEZSMlJVRXlPV1J1WlVRM1YzRnhXa1UzTWxsVlkwc0dPZ1pGVkE9PSIsImV4cCI6IjIwMTgtMDgtMDlUMDM6Mjk6MjAuODI1WiIsInB1ciI6ImJsb2Jfa2V5In19--49d42646e297bbb9f201113056e00dab0f2a6c77/debussy.pdf?content_type=application%2Fpdf&disposition=inline%3B+filename%3D%22debussy.pdf%22%3B+filename%2A%3DUTF-8%27%27debussy.pdf
+Completed 302 Found in 10ms (ActiveRecord: 1.4ms)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaDF3ZEZSMlJVRXlPV1J1WlVRM1YzRnhXa1UzTWxsVlkwc0dPZ1pGVkE9PSIsImV4cCI6IjIwMTgtMDgtMDlUMDM6Mjk6MjAuODI1WiIsInB1ciI6ImJsb2Jfa2V5In19--49d42646e297bbb9f201113056e00dab0f2a6c77/debussy.pdf?content_type=application%2Fpdf&disposition=inline%3B+filename%3D%22debussy.pdf%22%3B+filename%2A%3DUTF-8%27%27debussy.pdf" for 127.0.0.1 at 2018-08-08 23:24:20 -0400
+Processing by ActiveStorage::DiskController#show as PDF
+  Parameters: {"content_type"=>"application/pdf", "disposition"=>"inline; filename=\"debussy.pdf\"; filename*=UTF-8''debussy.pdf", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaEpJaDF3ZEZSMlJVRXlPV1J1WlVRM1YzRnhXa1UzTWxsVlkwc0dPZ1pGVkE9PSIsImV4cCI6IjIwMTgtMDgtMDlUMDM6Mjk6MjAuODI1WiIsInB1ciI6ImJsb2Jfa2V5In19--49d42646e297bbb9f201113056e00dab0f2a6c77", "filename"=>"debussy"}
+[36m  Disk Storage (0.8ms) [0m[34mDownloaded file from key: ptTvEA29dneD7WqqZE72YUcK[0m
+Completed 200 OK in 2ms (ActiveRecord: 0.0ms)
+
+
