@@ -7,7 +7,6 @@ class Api::V1::ScoresController < ApplicationController
   end
 
   def create
-    byebug
     @score = Score.create(score_params)
     render json: @score
   end
