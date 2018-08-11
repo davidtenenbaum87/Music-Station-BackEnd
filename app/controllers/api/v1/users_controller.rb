@@ -22,6 +22,7 @@ class Api::V1::UsersController < ApplicationController
       render json: {
         username: @user.username,
         id: @user.id,
+        token: gen_token()
       }
     else
       render json: {
@@ -29,6 +30,18 @@ class Api::V1::UsersController < ApplicationController
       }, status: :unprocessable_entity
     end
   end
+
+  def current
+    @user = User.find(get_token_payload("sub"))
+    if !!@user
+      render json: @user
+    else
+      render json: {
+        message: "Invalid token"
+      }, status: :unauthorized
+    end
+  end
+
 
   private
 

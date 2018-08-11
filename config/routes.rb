@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :users, only: [:index, :create, :show]
       resources :scores, only: [:index, :create, :show, :destroy]
-      # get '/current_user', to: 'users#current_user'
+      get '/current_user', to: 'users#current'
     end
   end
 
