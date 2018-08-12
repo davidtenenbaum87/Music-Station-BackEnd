@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 2018_08_08_123450) do
   create_table "scores", force: :cascade do |t|
     t.string "title"
     t.string "composer"
+    t.string "instrumentation"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
