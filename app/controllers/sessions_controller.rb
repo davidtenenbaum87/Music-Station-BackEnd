@@ -7,6 +7,7 @@ class SessionsController < ApplicationController
       render json: {
         username: @user.username,
         id: @user.id,
+        scores: @user.scores,
         token: gen_token()
       }
     else
