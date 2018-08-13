@@ -8,6 +8,7 @@ class SessionsController < ApplicationController
         username: @user.username,
         id: @user.id,
         scores: @user.scores,
+        events: @user.events,
         token: gen_token()
       }
     else
