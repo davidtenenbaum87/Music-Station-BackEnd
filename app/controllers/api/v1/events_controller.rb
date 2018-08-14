@@ -16,6 +16,24 @@ class Api::V1::EventsController < ApplicationController
     render json: @event
   end
 
+  def update
+    @event = Event.find_by(id: params[:id])
+
+    @event.event_title = params[:event_title]
+    @event.description = params[:description]
+    @event.event_date = params[:event_date]
+    @event.start_time = params[:start_time]
+    @event.end_time = params[:end_time]
+
+    if (@event.save)
+      render json: @event
+    else
+      render json: {
+        errors: @event.errors.full_messages
+      }, status: :unprocessable_entity
+    end
+  end
+
   def destroy
     @event = Event.find(params[:id])
     @event.destroy

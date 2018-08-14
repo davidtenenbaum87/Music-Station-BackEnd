@@ -7,8 +7,26 @@ class Api::V1::ScoresController < ApplicationController
   end
 
   def create
-    @score = Score.create(score_params)
-    render json: @score
+
+    @score = Score.new(score_params)
+    # render json: @score
+
+    # @score = Score.new
+
+    # @score.title = params[:title]
+    # @score.composer = params[:composer]
+    # @score.instrumentation = params[:instrumentation]
+    # @score.music_score = params[:music_score]
+    # @score.user_id = params[:user_id]
+
+
+    if (@score.save)
+      render json: {score: @score, status: 200}
+    else
+      render json: {
+        errors: @score.errors.full_messages
+      }, status: :unprocessable_entity
+    end
   end
 
   def show
