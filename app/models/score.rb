@@ -1,5 +1,6 @@
 class Score < ApplicationRecord
   belongs_to :user
+  has_many :comments
   has_one_attached :music_score
 
   # validates :title, presence: true, uniqueness: true
