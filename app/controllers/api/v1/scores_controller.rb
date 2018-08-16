@@ -45,7 +45,7 @@ class Api::V1::ScoresController < ApplicationController
   private
 
   def score_params
-    params.permit(:title, :composer, :instrumentation, :user_id, :music_score)
+    params.permit(:title, :composer, :instrumentation, :user_id, :music_score, :comments)
   end
 
 end
