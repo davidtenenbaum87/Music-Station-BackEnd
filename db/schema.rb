@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 2018_08_15_132656) do
   end
 
   create_table "comments", force: :cascade do |t|
+    t.string "page"
     t.string "measure"
     t.string "description"
     t.integer "score_id"

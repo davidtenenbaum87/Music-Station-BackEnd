@@ -11,7 +11,6 @@ class Api::V1::CommentsController < ApplicationController
 
       @comment = Comment.new(comment_params)
 
-
       if (@comment.save)
         render json: {comment: @comment, status: 200}
       else
@@ -35,7 +34,7 @@ class Api::V1::CommentsController < ApplicationController
     private
 
     def comment_params
-      params.permit(:measure, :description, :score_id)
+      params.permit(:page, :measure, :description, :score_id)
     end
 
 
